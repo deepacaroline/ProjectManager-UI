@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="page-header">
+    <b>Add Project</b>
+  </div>
+  <table style="text-align: left; border-collapse: separate; border-spacing: 5px">
+    <tr>
+      <td>
+        Project Name
+      </td>
+      <td>
+        <input type="text" name="txtProjectName" [(ngModel)] = "project.ProjectName" >        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" (click)="toggleDate()" (ngModel)= "displayDate">  
+        <br/> Set Start & End Date 
+      </td>
+      <td>
+        Start Date <input type="date" [(ngModel)] = "project.ProjectStartDate">  
+        <br/> End Date <input type="date" [(ngModel)] = "project.ProjectEndDate">
+      </td>
+    </tr>
+  </table>
+</div>

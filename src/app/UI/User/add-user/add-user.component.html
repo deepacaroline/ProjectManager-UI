@@ -1,0 +1,94 @@
+
+<div class="container">
+  <div class="page-header">
+    <b>Add User</b>
+  </div>
+  <table style="text-align: left; border-collapse: separate; border-spacing: 5px">
+    <tr>
+      <td>
+        First Name 
+      </td>
+      <td>
+        <input type="text" name="txtFirstName" [(ngModel)] = "user.EmpFirstName" >        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Last Name 
+      </td>
+      <td>
+        <input type="text" name="txtLastName" [(ngModel)] = "user.EmpLastName" >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Employee ID 
+      </td>
+      <td>
+        <input type="text" name="txtEmployeeId" [(ngModel)] = "user.EmpID" >
+      </td>
+    </tr>
+    <br/>
+    <tr>
+      <td>
+        <input type="submit" value={{addUpdate}} (click)="submitClick(addUpdate)">
+        <!--<button class="btn btn-success gapRightLeft mr-4" (click)="addUpdateUser(addUpdateButton);">{{addUpdateButton}}</button>-->
+      </td>
+      <td>
+        <input type="submit" value="Reset" (click)="resetClick()">
+      </td>
+    </tr>
+  </table>
+  
+  <div class="page-header">
+    <b>View User</b>
+  </div>
+  <p>
+    <label>Search:</label>&nbsp;
+    <input type="text" name="User" class="mx-4" (keyup)="keyChange($event)" >&nbsp;
+
+    <label>Sort By: </label>&nbsp;
+    <button (click)="sortRecords('EmpFirstName')">First Name</button>&nbsp;
+    <button (click)="sortRecords('EmpLastName')">Last Name</button>&nbsp;
+    <button (click)="sortRecords('EmpID')">Employee Id</button>&nbsp;       
+  </p>
+  <div class="list-group" *ngFor="let user of filteredUsers">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-6">
+            <p >
+              <label>Employee ID:</label> {{user.EmpID}}
+            </p>
+            <p >
+              <label>First Name:</label> {{user.EmpFirstName}}
+            </p>
+            <p >
+              <label>Last Name:</label> {{user.EmpLastName}}
+            </p>        
+          </div>          
+        </div>
+      </div>
+  </div>
+  <!--<div class="list-group" *ngFor="let user of users | filter : srchTerm | orderBy: path : order"></div>-->
+  <div class="list-group" *ngFor="let user of userList">
+  <div class="list-group-item">
+    <div class="row">
+      <div class="col-md-6">
+        <p >
+          <label>Employee ID:</label> {{user.EmpID}}
+        </p>
+        <p >
+          <label>First Name:</label> {{user.EmpFirstName}}
+        </p>
+        <p >
+          <label>Last Name:</label> {{user.EmpLastName}}
+        </p>        
+      </div>
+      <div class="col-md-6">
+        <p><button (click)="editUser(user)">Edit</button></p>
+        <p><button (click)="deleteUser(user)">Delete</button></p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
